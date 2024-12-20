@@ -1,11 +1,11 @@
 <?php
 require_once 'Inventario.php';
-require_once 'utils.php'; // Inclui o arquivo de utilidades
+require_once 'utils.php';
 
 $inventario = new Inventario();
 
 while (true) {
-    limparTela(); // Usa a função de limpeza de tela definida no utils.php
+    limparTela();
     echo "\nMenu:\n";
     echo "1. Mapeamento (Criar novas áreas)\n";
     echo "2. Ver áreas\n";
@@ -20,10 +20,10 @@ while (true) {
             $inventario->mapeamento($nomeArea, $range);
             break;
         case '2':
-            listarAreas($inventario); // Função de lista de áreas com limitação de tela
+            listarAreas($inventario);
             break;
         case '3':
-            entrarNaArea($inventario); // Função para entrar em uma área com limitação de tela
+            entrarNaArea($inventario);
             break;
         case '4':
             echo "Saindo...\n";

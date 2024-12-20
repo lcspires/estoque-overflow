@@ -1,24 +1,21 @@
 <?php
-require_once 'utils.php'; // Inclui o arquivo de utilidades
+require_once 'utils.php';
 
 class Inventario {
     private $areas = [];
-    private $idCounter = 1; // Para rastrear IDs
+    private $idCounter = 1;
 
-    // Cria uma nova área dentro do inventário
     public function criarArea($nome) {
         $this->areas[] = ['id' => $this->idCounter++, 'nome' => $nome, 'itens' => []];
         echo "Área '$nome' criada com sucesso.\n";
     }
 
-    // Mapeamento de áreas
     public function mapeamento($nome, $range) {
         for ($i = 1; $i <= $range; $i++) {
             $this->criarArea("$nome .{$i}");
         }
     }
 
-    // Entrar em uma área pelo ID com loop de interação
     public function entrarNaArea($id) {
         foreach ($this->areas as &$area) {
             if ($area['id'] == $id) {
@@ -30,12 +27,10 @@ class Inventario {
         echo "Área não encontrada.\n";
     }
 
-    // Método para contar itens em uma área
     private function contarItens($area) {
         return count($area['itens']);
     }
 
-    // Método de interação com a área
     private function interagirComArea(&$area) {
         $continua = true;
         while ($continua) {
@@ -67,7 +62,6 @@ class Inventario {
         }
     }
 
-    // Lista todas as áreas
     public function listarAreas() {
         echo "Áreas do Inventário:\n";
         foreach ($this->areas as $area) {
@@ -76,7 +70,6 @@ class Inventario {
         }
     }
 
-    // Lista todos os itens de uma área específica
     public function listarItens($areaId) {
         foreach ($this->areas as $area) {
             if ($area['id'] == $areaId) {
