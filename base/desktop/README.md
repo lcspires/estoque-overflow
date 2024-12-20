@@ -1,5 +1,5 @@
-meu-projeto-desktop/
-├── pom.xml							// Arquivo de configuração do Maven para gerenciamento de dependências e build do projeto.
+desktop/
+├── pom.xml						// Arquivo de configuração do Maven para gerenciamento de dependências e build do projeto.
 ├── README.md						// Arquivo de documentação do projeto.
 ├── .gitignore						// Arquivo de configuração para o Git, ignorando arquivos temporários e gerados.
 ├── src/
