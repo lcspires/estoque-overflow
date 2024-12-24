@@ -1,0 +1,37 @@
+body {
+    background-color: #f7f9fc;
+    font-family: Arial, sans-serif;
+}
+.table {
+    background-color: white;
+}
+.btn-primary {
+    background-color: #1f3b57;
+    border-color: #1f3b57;
+}
+.btn-primary:hover {
+    background-color: #16324a;
+    border-color: #16324a;
+}
+.btn-warning {
+    background-color: #f0ad4e;
+    border-color: #eea236;
+}
+.btn-warning:hover {
+    background-color: #ec971f;
+    border-color: #d58512;
+}
+.btn-danger {
+    background-color: #d9534f;
+    border-color: #d43f3a;
+}
+.btn-danger:hover {
+    background-color: #c9302c;
+    border-color: #ac2925;
+}
+h2 {
+    color: #1f3b57;
+}
+.container {
+    max-width: 900px;
+}
