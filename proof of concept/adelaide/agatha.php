@@ -28,7 +28,7 @@ var_dump($code, $codeClear);
 $codeMore = function ($code) {
     var_dump($code);
 };
-$codeMore("Cadê a galera da droga?");
+$codeMore("barras e barras");
 
 $object = new StdClass();
 $object->teste = $codeClear;

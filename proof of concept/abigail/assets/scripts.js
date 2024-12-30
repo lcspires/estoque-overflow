@@ -1,1 +1,1 @@
-document.getElementById("js").innerHTML= "JS!";
+document.getElementById("js").innerHTML= "JavaScript!";

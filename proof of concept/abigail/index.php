@@ -11,7 +11,7 @@
 $name = "friend";
 
 echo "<h1>Hello, $name.</h1>";
-echo "<p id='js'>Loading...</p>";
+echo "<p id='js'>changed</p>";
 ?>
 
 <script src="assets/scripts.js"></script>
