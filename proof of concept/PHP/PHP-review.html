@@ -1,0 +1,922 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>php review</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="164340f3-7d8b-804a-8203-c9bf2d223673" class="page sans"><header><h1 class="page-title">php review</h1><p class="page-description"></p></header><div class="page-body"><p id="164340f3-7d8b-815b-a4c5-d4f5a43e301b" class=""><code>php –S localhost:8000</code><br/><br/><code>localhost:8000</code>.</p><p id="164340f3-7d8b-814b-b3e9-ebcfc76f4776" class=""><strong>Interação com o HTML</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="164340f3-7d8b-8191-a617-c487f2359f6e" class="code"><code class="language-HTML" style="white-space:pre-wrap;word-break:break-all">&lt;?php $nome = &quot;João&quot;; ?&gt;
+&lt;p&gt;Nome: &lt;?php echo $nome; ?&gt;&lt;/p&gt;</code></pre><p id="164340f3-7d8b-816a-b54b-d1ec08d998f3" class=""><strong>Tipos de Variáveis</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="164340f3-7d8b-8166-b7ae-e6aef0bf996c" class="code"><code class="language-PHP" style="white-space:pre-wrap;word-break:break-all">&lt;?php
+    
+$string = &quot;txt&quot;; $numInteiro = 42; $pontoFlutuante = 3.14; $booleana = true;
+$nula = null; $arrayNum = [&quot;cara&quot;, &quot;coroa&quot;]; $chaves = [&quot;garagem&quot; =&gt; 6, &quot;porta&quot; =&gt; 8]</code></pre><p id="164340f3-7d8b-81dd-9f24-ddfd94e806fb" class=""><mark class="highlight-blue"><strong>Operadores de Comparação</strong></mark></p><ul id="164340f3-7d8b-812e-a92e-c661a50a6133" class="bulleted-list"><li style="list-style-type:disc">Igual (==) • var_dump(5 == “5”) • True</li></ul><ul id="164340f3-7d8b-81f1-8bea-ee2e757f1ef6" class="bulleted-list"><li style="list-style-type:disc">Idêntico (===) • var_dump(5 == “5”) • False</li></ul><ul id="164340f3-7d8b-81b5-8bd0-ede69517494a" class="bulleted-list"><li style="list-style-type:disc">Diferente (!= ou &lt;&gt;) • var_dump(7 != “5”) • var_dump(7 &lt;&gt; “5”) • True</li></ul><ul id="165340f3-7d8b-8051-a2db-df051eaba33e" class="bulleted-list"><li style="list-style-type:disc">Muito Diferente (!==) • var_dump(7 !== “5”) • False</li></ul><ul id="164340f3-7d8b-8194-b020-f8f10d936f8c" class="bulleted-list"><li style="list-style-type:disc">Maior que (&gt;) • Menor que (&lt;) • Maior ou igual que (&gt;=) • Menor ou igual que (&lt;=)</li></ul><p id="165340f3-7d8b-80a6-8c12-e837842f8856" class=""><mark class="highlight-blue"><strong>Operadores Lógicos</strong></mark></p><ul id="165340f3-7d8b-8053-97e5-da67efaf6602" class="bulleted-list"><li style="list-style-type:disc">&amp;&amp; (AND) • || (OR) • ! (NOT)</li></ul><p id="164340f3-7d8b-8193-a257-daa2a3ee9b0d" class=""><strong>Sequência de escape ANSI</strong></p><p id="165340f3-7d8b-8037-bd81-de99dba2d36f" class=""><code><strong>echo &quot;\033[2J\033[;H&quot;;</strong></code></p><ul id="164340f3-7d8b-819a-bf07-f09768ea163e" class="bulleted-list"><li style="list-style-type:disc"><code>\033</code>: Indica que uma sequência de escape está começando. O código <code>\033</code> é usado para representar o caractere “ESC” (Escape), que tem um valor ASCII decimal de 27 (ou octal 033).</li></ul><ul id="164340f3-7d8b-81df-92e0-cd9d962d86cc" class="bulleted-list"><li style="list-style-type:disc"><code>[2J</code>: Essa parte da sequência de escape é usada para limpar a tela. O <code>2J</code> é uma instrução que significa “limpar toda a tela” (J de “Janela”). O número entre colchetes (2) indica o tipo de limpeza, neste caso, “limpar a tela inteira”.</li></ul><ul id="164340f3-7d8b-8181-9aec-f7029aac8989" class="bulleted-list"><li style="list-style-type:disc"><code>\033</code>: Indicando novamente que uma outra sequência de escape está começando.</li></ul><ul id="164340f3-7d8b-819c-9191-d14615f2427e" class="bulleted-list"><li style="list-style-type:disc"><code>[;H</code>: Esta parte é usada para posicionar o cursor na tela. Neste caso, a instrução <code>;H</code> é usada para definir a posição do cursor como a posição padrão do início da tela.</li></ul><p id="164340f3-7d8b-814a-a807-c13c80f9dd9b" class=""><code>$entrada = readline();</code>: Lê a entrada do usuário e armazena na variável <code>$entrada</code>.</p><p id="165340f3-7d8b-80d0-aef5-c4ab83023717" class=""><code>if ($entrada != &#x27;1&#x27;) { ... } else { ... }</code>: Verifica se a entrada está de acordo com as regras.</p><p id="164340f3-7d8b-81ff-9ec0-ebda645b36de" class=""><strong>Depuração:</strong></p><p id="164340f3-7d8b-81e8-b263-c91223dff87a" class=""><code>var_dump()</code> fornece informações sobre uma variável ou mais variáveis.</p><p id="166340f3-7d8b-8067-ab99-ed39877858b5" class=""><code>print_r()</code> para arrays e objetos.</p><p id="166340f3-7d8b-807b-b9f0-de8745e2f856" class=""><strong>Validação:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="166340f3-7d8b-80db-9507-fa8e05915fab" class="code"><code class="language-PHP">&lt;?php    
+$idade = &quot;20&quot;;
+if (is_numeric($idade) &amp;&amp; $idade &lt; 18){</code></pre><p id="166340f3-7d8b-8011-87c4-c577e48b6eed" class=""><strong>Validação Explícita</strong> <code>filter_var($idade, FILTER_VALIDATE_INT);</code> </p><p id="166340f3-7d8b-80ea-a15a-d3891d1ad896" class=""><strong>Expressão Regular</strong> <code>preg_match(&#x27;/^\d+$/&#x27;, $idade);</code></p><p id="166340f3-7d8b-806f-9d23-e74bbcfbdec3" class=""><strong>Conversão Explícita</strong> <code>$idade = intval($idade)</code></p><p id="164340f3-7d8b-8143-a304-c926b81b9a74" class=""><strong>Entradas:</strong></p><p id="164340f3-7d8b-811d-9b94-e3a68c325a40" class=""> <code>$variableName = readline();</code></p><p id="166340f3-7d8b-8090-8c34-da4f7e71b92c" class="">
+</p><p id="164340f3-7d8b-81de-a1c1-e3150631f63e" class=""><strong>Array Indexado</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="164340f3-7d8b-8100-9ab4-f27e2f55e4be" class="code"><code class="language-PHP" style="white-space:pre-wrap;word-break:break-all">&lt;?php $nomes = [&quot;João&quot;, &quot;Maria&quot;, &quot;Pedro&quot;];</code></pre><p id="166340f3-7d8b-8057-892a-ceb81004df52" class=""><code>$nomes[] = &quot;Carlos&quot;;</code> <strong>acrescenta “Carlos” ao final da lista;</strong></p><p id="166340f3-7d8b-8028-a34e-e16e5c9d9f2d" class=""><code>unset($nomes[1]);</code> <strong>remove “Maria” da lista;</strong></p><p id="166340f3-7d8b-80e0-901f-d56c271e60f8" class=""><code>$nomes = array_values($nomes);</code> <strong>reorganiza os índices da lista;</strong></p><p id="166340f3-7d8b-8055-94aa-ee17fa20eb70" class=""><code>foreach ($nomes as $i =&gt; $nome) {&#x27;looping code&#x27;};</code> <strong>percorre a lista;</strong></p><p id="166340f3-7d8b-80ff-97c4-e61945b9e157" class=""><code>for ($i = 0; $i &lt; </code><code><span style="border-bottom:0.05em solid">count($nomes)</span></code><code>; $i++) {&#x27;looping code&#x27;};</code> <strong>percorre a lista;</strong></p><p id="166340f3-7d8b-802c-aa9e-ffe435a4be8d" class="">
+</p><p id="166340f3-7d8b-80dc-bbed-f3b076254334" class=""><strong>Array Associativo</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="166340f3-7d8b-806c-aa6f-d0080cef0754" class="code"><code class="language-PHP" style="white-space:pre-wrap;word-break:break-all">&lt;?php $usuario = [&quot;nome&quot; =&gt; &quot;João&quot;, &quot;email&quot; =&gt; &quot;joao@example.com&quot;, &quot;idade&quot; =&gt; 30];</code></pre><p id="166340f3-7d8b-80b5-a8d8-c0552588f59a" class=""><code>echo $usuario[&quot;nome&quot;];</code> <strong>acessando “João” usando a chave “nome”;</strong></p><p id="166340f3-7d8b-8019-9088-d7807cf0d297" class=""><code>$usuario[&quot;cidade&quot;] = &quot;São Paulo&quot;;</code> <strong>acresce um novo campo ao array “usuario”;</strong></p><p id="166340f3-7d8b-80fe-a10a-ea00c4e04db2" class=""><code>unset($usuario[&quot;idade&quot;]);</code> <strong>remove o campo de chave “idade” do array “usuario”;</strong></p><p id="166340f3-7d8b-805e-be72-e4b6b4e7c824" class=""><code>foreach ($usuario as $chave =&gt; $valor) {echo &quot;$chave: $valor&quot;};</code> <strong>percorre a lista;</strong></p><p id="166340f3-7d8b-8031-8949-d6d94608b460" class="">
+</p><p id="166340f3-7d8b-8024-8c59-d8abac3f0c03" class=""><strong>Array Multidimensional</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="164340f3-7d8b-81bd-b01d-ed8176fad44c" class="code"><code class="language-PHP" style="white-space:pre-wrap;word-break:break-all">&lt;?php
+$usuarios =
+[
+    [&quot;nome&quot; =&gt; &quot;João&quot;, &quot;idade&quot; =&gt; 30],    // $usuarios[0]
+	  [&quot;nome&quot; =&gt; &quot;Maria&quot;, &quot;idade&quot; =&gt; 25],   // $usuarios[1]
+    [&quot;nome&quot; =&gt; &quot;Carlos&quot;, &quot;idade&quot; =&gt; 40]   // $usuarios[2]
+];</code></pre><p id="164340f3-7d8b-81be-835f-ddcb98578d58" class=""><strong>Iterando em um Array Multidimensional</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="164340f3-7d8b-8134-83c8-f22472e1007d" class="code"><code class="language-PHP" style="white-space:pre-wrap;word-break:break-all">&lt;?php
+foreach ($usuarios as $indice =&gt; $usuario) {
+    echo &quot;Usuário $indice:&quot; . PHP_EOL;    foreach ($usuario as $chave =&gt; $valor) {
+        echo &quot;  $chave: $valor&quot; . PHP_EOL;    }
+}</code></pre><p id="164340f3-7d8b-814f-9177-d4cf7f6273eb" class=""><strong>De modo que $matrix[1][1] seja 5</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="164340f3-7d8b-81fa-ae2a-c99c4462f420" class="code"><code class="language-PHP" style="white-space:pre-wrap;word-break:break-all">&lt;?php
+
+$matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+
+$matriz = array(
+    array(1, 2, 3),
+	  array(4, 5, 6),
+	  array(7, 8, 9)
+);
+
+foreach ($matrix as $linha) {
+    foreach ($linha as $valor) {
+        echo $valor . &quot; &quot;;
+    }
+    echo PHP_EOL;
+}</code></pre><p id="164340f3-7d8b-8169-854f-cf368f76c37f" class=""><strong>Funções Essenciais para Trabalhar com Arrays no PHP</strong></p><p id="164340f3-7d8b-81d2-8d6d-c7059c8cb2cf" class=""><code><strong>array_push($array, &quot;item&quot;)</strong></code><strong> - adiciona elementos ao final do array</strong></p><p id="164340f3-7d8b-8121-ab2c-d0f1f035dc63" class=""><code><strong>array_pop($array)</strong></code><strong> - remove o último elemento</strong></p><p id="164340f3-7d8b-81ea-b10e-f5fa9c556b12" class=""><code><strong>rarray_shift($array)</strong></code><strong> - remove o primeiro elemento e reorganiza o array</strong></p><p id="164340f3-7d8b-814b-8a8f-c471966d9251" class=""><code><strong>array_unshift($array)</strong></code><strong> - adiciona itens no começo e empurra o resto para trás</strong></p><p id="164340f3-7d8b-81f9-8361-c453126bf318" class=""><code><strong>in_array(&quot;item&quot;, $array)</strong></code><strong> - verifica se um valor existe, retorna true ou false</strong></p><p id="164340f3-7d8b-8187-8c50-d1a235067bf5" class=""><code><strong>$chaves = array_keys($array)</strong></code><strong> e </strong><code><strong>$valores = array_values($array)</strong></code><strong> - separa chaves e valores </strong></p><p id="168340f3-7d8b-8096-8489-d933e3e930fc" class=""><code><strong>$resultado = array_merge($array1, $array2)</strong></code><strong> - junta duas listas</strong></p><p id="164340f3-7d8b-815c-93ac-ce659ab06e11" class=""><code><strong>$posicao = array_search(&quot;item&quot;, $array)</strong></code><strong> - encontra a posição de um valor, false se não existir</strong></p><p id="164340f3-7d8b-8102-8231-e7a46617e32a" class=""><code><strong>$dobrar = array_map(fn($n) =&gt; $n * 2, $array)</strong></code><strong> - aplica uma função em todos os elementos</strong></p><p id="168340f3-7d8b-8024-bf5f-fc6539a397ca" class="">
+</p><p id="168340f3-7d8b-800e-b65e-ed0b1232476f" class=""><code><strong>$arrayFixo = new SplFixedArray(5)</strong></code><strong> - cria um array com 5 posições fixas</strong></p><p id="168340f3-7d8b-8014-8ed7-de9850da69f0" class=""><strong>Matriz Fixa via Classes e Métodos, Tratamento de Exceções e muito mais</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="168340f3-7d8b-801d-868f-de89e11aa786" class="code"><code class="language-PHP">$tamanho = 4;
+$matrizFixa = new SplFixedArray($tamanho);
+
+for ($i = 0; $i &lt; $tamanho; $i++) {
+    $matrizFixa[$i] = new SplFixedArray($tamanho);
+}
+// inserindo valores aleatórios
+for ($i = 0; $i &lt; $tamanho; $i++) {
+    for ($j = 0; $j &lt; $tamanho; $j++) {
+        $matriz[$i][$j] = rand(1, 100);
+    }
+}</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="168340f3-7d8b-806d-a866-c50befd5c953" class="code"><code class="language-PHP">&lt;?php 
+
+abstract class Matriz {
+    protected $linhas;
+    protected $colunas;
+    protected $matriz;
+
+    public function __construct(int $linhas, int $colunas, $valorPadrao) {
+        if ($linhas &lt; 0 || $colunas &lt; 0) {
+            throw new InvalidArgumentException(&quot;O número de linhas e colunas deve ser maior ou igual a zero.&quot;);
+        }
+
+        $this-&gt;linhas = $linhas;
+        $this-&gt;colunas = $colunas;
+        $this-&gt;matriz = array_fill(0, $linhas, array_fill(0, $colunas, $valorPadrao));
+    }
+
+    // Método abstrato para validação de tipo, que será implementado pelas classes filhas
+    abstract protected function validarTipo($valor): bool;
+
+    // Acesso ao valor de um índice
+    public function get($linha, $coluna) {
+        if (!$this-&gt;indiceValido($linha, $coluna)) {
+            throw new OutOfBoundsException(&quot;Erro ao acessar valor: índice inválido.&quot;);
+        }
+        return $this-&gt;matriz[$linha][$coluna];
+    }
+
+    // Definir o valor de um índice
+    public function set($linha, $coluna, $valor) {
+        if (!$this-&gt;indiceValido($linha, $coluna)) {
+            throw new OutOfBoundsException(&quot;Erro ao definir valor: índice inválido.&quot;);
+        }
+
+        if (!$this-&gt;validarTipo($valor)) {
+            throw new InvalidArgumentException(&quot;Erro ao definir valor: tipo inválido.&quot;);
+        }
+
+        $this-&gt;matriz[$linha][$coluna] = $valor;
+    }
+
+    private function indiceValido($linha, $coluna): bool {
+        return $linha &gt;= 0 &amp;&amp; $linha &lt; $this-&gt;linhas &amp;&amp; $coluna &gt;= 0 &amp;&amp; $coluna &lt; $this-&gt;colunas;
+    }
+
+    // Visualização da matriz
+    public function visualizarMatriz() {
+        for ($i = 0; $i &lt; $this-&gt;linhas; $i++) {
+            for ($j = 0; $j &lt; $this-&gt;colunas; $j++) {
+                echo $this-&gt;matriz[$i][$j] . &quot; &quot;;
+            }
+            echo &quot;\n&quot;;
+        }
+    }
+}
+
+class MatrizInt extends Matriz {
+    public function __construct(int $linhas, int $colunas, $valorPadrao = 0) {
+        parent::__construct($linhas, $colunas, $valorPadrao);
+    }
+
+    protected function validarTipo($valor): bool {
+        return is_int($valor);
+    }
+}
+
+class MatrizFloat extends Matriz {
+    public function __construct(int $linhas, int $colunas, $valorPadrao = 0.0) {
+        parent::__construct($linhas, $colunas, $valorPadrao);
+    }
+
+    protected function validarTipo($valor): bool {
+        return is_float($valor);
+    }
+}
+
+class MatrizString extends Matriz {
+    public function __construct(int $linhas, int $colunas, $valorPadrao = &quot;&quot;) {
+        parent::__construct($linhas, $colunas, $valorPadrao);
+    }
+
+    protected function validarTipo($valor): bool {
+        return is_string($valor);
+    }
+}
+function main() {
+    // Criar uma matriz de inteiros
+    $matrizInt = new MatrizInt(3, 3, 0);  // Inicializa com o valor 0
+
+    // Definindo valores na matriz de inteiros
+    try {
+        echo &quot;Setando valor 5 na posição (1, 1) da Matriz de Inteiros.\n&quot;;
+        $matrizInt-&gt;set(1, 1, 5);  // Definindo um valor válido para a posição (1, 1)
+        echo &quot;Valor definido com sucesso.\n&quot;;
+    } catch (Exception $e) {
+        echo $e-&gt;getMessage() . &quot;\n&quot;;
+    }
+
+    // Visualizando a matriz de inteiros
+    echo &quot;Visualizando Matriz de Inteiros:\n&quot;;
+    $matrizInt-&gt;visualizarMatriz();
+
+    // Criar uma matriz de floats
+    $matrizFloat = new MatrizFloat(2, 2, 0.0);  // Inicializa com o valor 0.0
+
+    // Definindo valores na matriz de floats
+    try {
+        echo &quot;Setando valor 1.5 na posição (0, 1) da Matriz de Floats.\n&quot;;
+        $matrizFloat-&gt;set(0, 1, 1.5);  // Definindo um valor válido para (0, 1)
+        echo &quot;Valor definido com sucesso.\n&quot;;
+    } catch (Exception $e) {
+        echo $e-&gt;getMessage() . &quot;\n&quot;;
+    }
+
+    // Visualizando a matriz de floats
+    echo &quot;Visualizando Matriz de Floats:\n&quot;;
+    $matrizFloat-&gt;visualizarMatriz();
+
+    // Criar uma matriz de strings
+    $matrizString = new MatrizString(2, 2, &quot;&quot;);  // Inicializa com valor vazio
+
+    // Definindo valores na matriz de strings
+    try {
+        echo &quot;Setando valor &#x27;Hello&#x27; na posição (1, 0) da Matriz de Strings.\n&quot;;
+        $matrizString-&gt;set(1, 0, &quot;Hello&quot;);  // Definindo um valor válido para (1, 0)
+        echo &quot;Valor definido com sucesso.\n&quot;;
+    } catch (Exception $e) {
+        echo $e-&gt;getMessage() . &quot;\n&quot;;
+    }
+
+    // Visualizando a matriz de strings
+    echo &quot;Visualizando Matriz de Strings:\n&quot;;
+    $matrizString-&gt;visualizarMatriz();
+}
+
+main();
+</code></pre><p id="168340f3-7d8b-8019-be90-c695c3c220c2" class="">
+</p><p id="164340f3-7d8b-8187-91fe-fc2e655afd41" class=""><code>if ($num &gt; 0) { ... }</code></p><p id="168340f3-7d8b-809c-b555-e230fcaeec70" class=""><code>elseif ($num &lt; 0) { ... }</code></p><p id="168340f3-7d8b-800f-b59c-cda7e656048f" class=""><code>else { echo &quot;num = 0&quot; } •</code></p><p id="168340f3-7d8b-8034-96ef-f4afed4d4845" class=""><code><strong>switch</strong></code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="168340f3-7d8b-8099-8094-ff98c9de114a" class="code"><code class="language-PHP">switch ($num){
+	case 1:
+		echo &quot;um&quot;;
+		break;
+	case 2:
+		echo &quot;dois&quot;;
+		break;
+	default: echo &quot;error&quot;;
+}</code></pre><p id="164340f3-7d8b-8160-86fe-d66a8f367a7a" class=""><strong>Contar Números Pares e Ímpares</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="164340f3-7d8b-81a7-8a4f-ce1049943919" class="code"><code class="language-PHP" style="white-space:pre-wrap;word-break:break-all">&lt;?php
+$numeros = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+$pares = 0;
+$impares = 0;
+foreach ($numeros as $numero) {
+    if ($numero % 2 == 0) {
+        $pares++; // Incrementa se o número for par
+    } else {
+        $impares++; // Incrementa se o número for ímpar
+    }
+}
+echo &quot;Total de números pares: $pares\n&quot;;
+echo &quot;Total de números ímpares: $impares\n&quot;;</code></pre><p id="164340f3-7d8b-818f-8e2a-d09669b3cd4f" class=""><strong>Instrução Ternária</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="164340f3-7d8b-811e-9a46-d2e2e6001d37" class="code"><code class="language-PHP" style="white-space:pre-wrap;word-break:break-all">$resultado = ($numero % 2 == 0) ? &quot;Par&quot; : &quot;Ímpar&quot;;</code></pre><p id="164340f3-7d8b-8168-89d5-cc41632b60be" class=""><strong>Instrução Ternária Aninhada</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="164340f3-7d8b-8145-8d95-d93ad5e55cbf" class="code"><code class="language-PHP" style="white-space:pre-wrap;word-break:break-all">$resultado = ($numero &gt; 0) ? &quot;Positivo&quot; : (($numero &lt; 0) ? &quot;Negativo&quot; : &quot;Zero&quot;);</code></pre><p id="164340f3-7d8b-81ff-95fb-de2bbeab0733" class=""><strong>Loops</strong></p><p id="164340f3-7d8b-811b-8d0f-c0925f349c6d" class=""><code>for ($i = 0; $i &lt; 5; $i++);</code></p><p id="164340f3-7d8b-8130-8906-ff4b870f943d" class=""><code>while ($i &lt; 5);</code></p><p id="164340f3-7d8b-815d-a40c-e94cbc8c6a76" class=""><mark class="highlight-orange">$i = 0;</mark> <code>do { código a ser executado ao menos uma vez; $i++;} while ($i &lt; 5);</code></p><p id="164340f3-7d8b-819e-af27-f896fad50c71" class=""><code>foreach ($array as $varTemp);</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="164340f3-7d8b-81f6-811d-c6969b02798e" class="code"><code class="language-PHP" style="white-space:pre-wrap;word-break:break-all">$produtos = array(&quot;Maçã&quot; =&gt; 3.50,&quot;Banana&quot; =&gt; 2.00,&quot;Laranja&quot; =&gt; 2.50);
+
+$total = 0;
+
+foreach ($produtos as $produto =&gt; $preco) {
+		$total += $preco;
+}</code></pre><p id="164340f3-7d8b-8180-b311-edb12a73cf94" class=""><strong>Função</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="164340f3-7d8b-817e-94d2-f2e0d8bd9d1c" class="code"><code class="language-PHP" style="white-space:pre-wrap;word-break:break-all">function mrRobot(){
+    echo &quot;Hello, friend!&quot;;
+}
+	
+mrRobot();</code></pre><p id="164340f3-7d8b-814b-9b08-e4f050f1d643" class=""><strong>Função com Parâmetros</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="164340f3-7d8b-81e5-9c9b-c1c8e7826e50" class="code"><code class="language-PHP" style="white-space:pre-wrap;word-break:break-all">function saudacao($nome) {
+		echo &quot;Olá, $nome!&quot;;
+}
+
+saudacao(&quot;Lucas&quot;);</code></pre><p id="164340f3-7d8b-81c6-bbc6-c1f526fe0d22" class=""><strong>Função com Retornos</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="164340f3-7d8b-8112-9d7e-fe3bc86771ee" class="code"><code class="language-PHP" style="white-space:pre-wrap;word-break:break-all">function multiplicacao($a, $b) {
+    return $a * $b;
+}
+$resultado = multiplicacao(4, 5);</code></pre><p id="164340f3-7d8b-81fa-9b3c-dcf3064ff793" class=""><strong>Função com Valores Padrão</strong></p><p id="164340f3-7d8b-8171-a334-c10edcbd7dd4" class="">Para quando você quer que a função funcione mesmo se o usuário não passar os argumentos:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="164340f3-7d8b-81fd-a37e-ea01af276408" class="code"><code class="language-PHP" style="white-space:pre-wrap;word-break:break-all">function saudacao($nome = &quot;Visitante&quot;) {
+    echo &quot;Olá, $nome, seja bem-vindo!&quot;;
+}</code></pre><p id="169340f3-7d8b-804f-bfc5-c0b183a670b2" class="">Operações de precisão com BcMath\Number</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="169340f3-7d8b-80b2-9404-f7dd3a6be53a" class="code"><code class="language-PHP">ini_set(&#x27;precision&#x27;, 27);
+
+echo bcadd(&#x27;0.1&#x27;, &#x27;0.2&#x27;, 27); // old
+
+use BcMath\Number;
+
+$numero1 = new Number(&#x27;0.1&#x27;);
+$numero2 = new Number(&#x27;0.2&#x27;);
+
+echo $numero1 + $numero2; // new
+
+echo $numero1-&gt;add($numero2, 27);</code></pre><p id="169340f3-7d8b-800f-84b0-d35074419cf8" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

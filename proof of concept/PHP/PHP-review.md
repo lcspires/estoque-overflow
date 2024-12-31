@@ -1,5 +1,17 @@
 # PHP
 
+**Cheats**
+```
+echo "\033[2J\033[;H";
+
+var_dump();
+
+if (is_int($var)) { ... } | is_int, is_float, is_string, is_bool, is_array, is_object.
+if (ctype_digit($string)) { ... } | Se a string contém apenas inteiros positivos ...
+if (preg_match('/^[0-9]{2}$/', ($var))) { ... } | Se a variável contém apenas dois digitos numéricos ...
+if (filter_var($email, FILTER_VALIDATE_EMAIL)) { ... } | FILTER_VALIDATE_URL, FILTER_VALIDATE_INT, etc.
+```
+
 **Dynamic Configuration**
 ```
 $envVars = ['DB_HOST' => 'localhost', 'DB_USER' => 'root', 'DB_PASS' => 'password'];
@@ -107,3 +119,5 @@ var_dump(array_filter($arr, function($v, $k) {
 }, ARRAY_FILTER_USE_BOTH)); output: 'b' => 2, 'd' => 4
 ```
 `closures` `anonymous functions` `binding` `dynamically defined` `beyond the values`
+
+**readline()**
