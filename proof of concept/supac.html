@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SI | 2025.1</title>
+    <style>
+		@import url('https://fonts.googleapis.com/css?family=Open+sans|Source+Code+Pro');
+        
+		h1, footer {
+			text-align: center;
+			font-family: "Source Code Pro", serif;
+		}
+		
+		body {		
+			font-family: "Open Sans", serif;
+		}
+		
+		table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
+
+        input[type="text"] {
+            margin-bottom: 10px;
+            padding: 8px;
+            width: 100%;
+            box-sizing: border-box;
+			font-family: "Open Sans", serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sistemas de Informação (UFBA) | 2025.1</h1>
+
+    <input type="text" id="filterInput" placeholder="Filtrar disciplinas...">
+
+    <table>
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nome</th>
+                <th>Docente</th>
+                <th>DIA | Horário</th>
+            </tr>
+        </thead>
+        <tbody id="taskList">
+        </tbody>
+    </table>
+
+    <script>
+        const supac = [
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: '<a href="https://www.instagram.com/lumaseixas/" target="_blank">Luma da Rocha Seixas</a>',
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+				docente: "<a href=\"https://www.instagram.com/lumaseixas/\" target=\"_blank\">Luma da Rocha Seixas</a>",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+            {
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+            {
+                codigo: "MATC98",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO II",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATC97",
+                nome: "TCC BACHARELADO SISTEMAS DE INFORMAÇÃO I",
+                docente: "Luma da Rocha Seixas",
+                time: "CMB | 00:00 às 23:00"
+            },
+			{
+                codigo: "MATE85",
+                nome: "TÓPICOS EM SISTEMAS DE INFORMAÇÃO E WEB I",
+                docente: "Frederico Araújo Durão",
+                time: "SEG & TER | 18:30 às 21:15 *"
+            },
+			{
+                codigo: "MATF34",
+                nome: "ACCS: PROGRAMAÇÃO COMPETITIVA",
+                docente: "Rubisley de Paula Lemes",
+                time: "SÁB | 13:55 às 17:35"
+            },
+			{
+                codigo: "MATF54",
+                nome: "ACCS: ONDA EDUCATIVA, DIGITAL, ECOLOGISTA E PAN-AFRO-INDÍGENA",
+                docente: "Paul Denis Etienne Regnier",
+                time: "TER & QUI | 16:40 às 18:30"
+            },
+        ];
+
+        const taskList = document.getElementById('taskList');
+        const filterInput = document.getElementById('filterInput');
+
+        function populateTable(data) {
+            taskList.innerHTML = '';
+            data.forEach(disciplina => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${disciplina.codigo}</td>
+                    <td>${disciplina.nome}</td>
+                    <td>${disciplina.docente}</td>
+                    <td>${disciplina.time}</td>
+                `;
+                taskList.appendChild(row);
+            });
+        }
+
+        populateTable(supac);
+
+        filterInput.addEventListener('input', function() {
+            const filterValue = filterInput.value.toLowerCase();
+            const filteredData = supac.filter(disciplina => {
+                return disciplina.codigo.toLowerCase().includes(filterValue) ||
+                    disciplina.nome.toLowerCase().includes(filterValue) ||
+                    disciplina.docente.toLowerCase().includes(filterValue) ||
+                    disciplina.time.toLowerCase().includes(filterValue);
+            });
+            populateTable(filteredData);
+        });
+    </script>
+	<footer>
+        <p>Dados obtidos em <a href="https://supac.ufba.br/sites/supac.ufba.br/files/195_19.html" target="_blank" rel="noopener noreferrer">SUPAC</a> (UFBA).</p>
+    </footer>
+</body>
+</html>
