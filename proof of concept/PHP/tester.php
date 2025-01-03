@@ -1,11 +1,15 @@
 <?php echo "\033[2J\033[;H";
 
-$code = "<h1>Call User Function!</h1>";
-$codeClear = call_user_func("strip_tags", $code);
+$rockAndRoll = 2;
 
-$codeMore = function ($code) {
-    var_dump($code);
-};
-$codeMore("#BoraProgramar!");
-echo PHP_EOL;
-var_dump($codeMore);
+if (isset($rockAndRoll)) {
+    var_dump("Rock existe e toca {$rockAndRoll}");
+} else {
+    var_dump("Não existe ou não está tocando!");
+}
+
+/*if (!empty($rockAndRoll)) {
+    var_dump("Rock existe e toca {$rockAndRoll}");
+} else {
+    var_dump("Não existe ou não está tocando!");
+}*/

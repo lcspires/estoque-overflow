@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Consolas, sans-serif;
+            margin: 20px;
+        }
+        .search-container {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Digite para filtrar a tabela...">
+    </div>
+
+    <table id="filterTable">
+        <thead>
+            <tr>
+                <th>Ferramenta</th>
+                <th>Comando</th>
+                <th>Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Linux</td>
+                <td>ls</td>
+                <td>Lista de diretórios.</td>
+            </tr>
+            <tr>
+                <td>Linux</td>
+                <td>ls -al</td>
+                <td>Lista de diretórios com exibição de arquivos ocultos.</td>
+            </tr>
+            <tr>
+                <td>Linux</td>
+                <td>cd dir</td>
+                <td>Muda do diretório atual para o especificado.</td>
+            </tr>
+			<tr>
+                <td>Linux</td>
+                <td>cd</td>
+                <td>Muda para o diretório /home (arquivos pessoais).</td>
+            </tr>
+			<tr>
+                <td>PHP</td>
+                <td>echo "\033[2J\033[;H";</td>
+                <td>Sequência de escape ANSI para limpar a tela.</td>
+            </tr>
+			<tr>
+                <td>PHP</td>
+                <td>phpinfo();</td>
+                <td>Exibe informações detalhadas sobre a configuração do PHP em uso.</td>
+            </tr>
+			<tr>
+				<td>PHP</td>
+				<td>echo</td>
+				<td>Exibe uma ou mais expressões na saída padrão.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>print();</td>
+				<td>Exibe uma string na saída padrão, retorna 1.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>print_r();</td>
+				<td>Exibe informações básicas sobre uma variável.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>var_dump();</td>
+				<td>Exibe informações detalhadas sobre uma variável.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>printf("%s, %d, %.2f", $str, $int, $float);</td>
+				<td>Formata e exibe uma string.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>vprintf("%s, %d, %.2f", $array);</td>
+				<td>Formata e exibe uma string a partir de um array(str, int, float).</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>$other = sprintf("%.2f", $float);</td>
+				<td>Formata uma string e a retorna para outrem.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>If ($cond) { ... }</td>
+				<td>Avalia uma condição.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>Elseif ($cond) { ... }</td>
+				<td>Fornece uma condição adicional a ser avaliada.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>Else { ... }</td>
+				<td>Se todas as condições anteriores forem falsas ...</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>Switch ($var) { case ...: break; default: ... break;}</td>
+				<td>Avalia uma variável e executa o caso correspondente.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>While (condition) { ... $varTemp++}</td>
+				<td>Executa um bloco de código enquanto a condição for verdadeira.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>Do { ... $varTemp++} while (condition);</td>
+				<td>Executa o bloco ao menos uma vez, verificando a condição no final.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>for ($i = 0; $i !== $n; $i++) { ... continue}</td>
+				<td>Repete um bloco de código com base em condições.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>foreach ($array as $item) { ... }</td>
+				<td>Itera sobre os elementos de um array simples.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>foreach ($array as $key => $value) { ... }</td>
+				<td>Itera sobre os elementos de um array ou objeto.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>If (!empty($variable) { ... })</td>
+				<td>Verifica se uma variável está vazia (null, false, 0, "", ou não definida).</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>If (isset($variable) { ... })</td>
+				<td>Verifica se uma variável está definida e não é null.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>$noTags = strip_tags($withTags);</td>
+				<td>Remove todas as tags HTML e PHP de uma string.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>$dynamicCall = call_user_func("strip_tags", $withTags);</td>
+				<td>Chama uma função passando-a como string.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>$variable = function ($argument) { ... };</td>
+				<td>Define uma função anônima (Closure), usualmente em runtime.</td>
+			</tr>
+			<tr>
+				<td>DEV</td>
+				<td>Branch</td>
+				<td>Uma ramificação a parte do repositório principal de código.</td>
+			</tr>
+			<tr>
+				<td>DEV</td>
+				<td>CI/CD</td>
+				<td>(Continuous Integration / Continuous Deployment)</td>
+			</tr>
+			<tr>
+				<td>DEV</td>
+				<td>Deploy</td>
+				<td>Movimentar o código para o ambiente de produção.</td>
+			</tr>
+			<tr>
+				<td>DEV</td>
+				<td>End-to-End (E2E)</td>
+				<td>Abrange o fluxo completo de uma solução, do início ao fim.</td>
+			</tr>
+			<tr>
+				<td>DEV</td>
+				<td>Exception</td>
+				<td>Eventos que precisam ser tratados para fins de evitar falhas.</td>
+			</tr>
+			<tr>
+				<td>DEV</td>
+				<td>Hotfix</td>
+				<td>Alterações emergenciais para corrigir erros críticos.</td>
+			</tr>
+			<tr>
+				<td>DEV</td>
+				<td>Merge</td>
+				<td>Integrar as alterações de uma branch de volta à branch main.</td>
+			</tr>
+			<tr>
+				<td>DEV</td>
+				<td>Mock</td>
+				<td>Versão fictícia de um sistema, protótipos para testes de usabilidade.</td>
+			</tr>
+			<tr>
+				<td>DEV</td>
+				<td>Mock Interview</td>
+				<td>Entrevista simulada.</td>
+			</tr>
+			<tr>
+				<td>DEV</td>
+				<td>MVP (Minimum Viable Product)</td>
+				<td>Solução funcional e utilizável, passível de feedback de usuários.</td>
+			</tr>
+			<tr>
+				<td>DEV</td>
+				<td>POC (Proof of Concept)</td>
+				<td>Demonstração para validar a viabilidade de uma ideia.</td>
+			</tr>
+			<tr>
+				<td>DEV</td>
+				<td>Pull Request (PR)</td>
+				<td>Requisitar que as alterações sejam integradas ao repositório principal.</td>
+			</tr>
+			<tr>
+				<td>DEV</td>
+				<td>Task</td>
+				<td>Uma unidade de trabalho, uma tarefa, uma funcionalidade, um bug.</td>
+			</tr>
+        </tbody>
+    </table>
+
+    <script>
+        document.getElementById('searchInput').addEventListener('input', function () {
+            const filter = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#filterTable tbody tr');
+
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                const match = Array.from(cells).some(cell => cell.textContent.toLowerCase().includes(filter));
+
+                row.style.display = match ? '' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>
