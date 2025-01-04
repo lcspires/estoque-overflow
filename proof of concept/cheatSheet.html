@@ -364,6 +364,151 @@
 				<td>$strde2 = "12" -> $a = 1 and $b = 2 (se ligue nos espaços)</td>
 			</tr>
 			<tr>
+				<td>PHP</td>
+				<td>$date = new DateTime() || DateTime('2025-01-01 12:00:00')</td>
+				<td>Nova instância de DateTime para data e hora atual ou fornecida.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>$date->format("d/m/Y H:i:s");</td>
+				<td>Formata a data de acordo com o formato especificado.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>$date->modify('+1 day')</td>
+				<td>Modifica a data adicionando ou subtraindo um intervalo de tempo.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>$date->add(new DateInterval('P1D')) || ('P1M') // +1 mês</td>
+				<td>Adiciona um intervalo de tempo à data.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>$date->sub(new DateInterval('P1D')) // -1 dia</td>
+				<td>Subtrai um intervalo de tempo da data.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>$date->setDate(2025, 1, 1)</td>
+				<td>Define a data para uma instância de DateTime.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>$date->setTime(12, 0, 0)</td>
+				<td>Define o horário para uma instância de DateTime.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>echo $date->getTimestamp()</td>
+				<td>Retorna o timestamp UNIX da data, p.ex.: int(1735743600).</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>$date->setTimestamp(1672531200)</td>
+				<td>Define o timestamp UNIX para a instância de DateTime.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>$date1->diff($date2)</td>
+				<td>Calcula a diferença entre duas instâncias de DateTime.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>DateTime::createFromFormat('Y-m-d', '2025-01-01')</td>
+				<td>Cria uma instância de DateTime a partir de uma string.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>echo $date->getTimezone()</td>
+				<td>Obtém o fuso horário associado à instância de DateTime.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>$date->setTimezone(new DateTimeZone('UTC'))</td>
+				<td>Define o fuso horário para a instância de DateTime.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>echo getdate()["mday"]; // retorna o dia do mês</td>
+				<td>seconds, minutes, hours, wday, yday, mon, year, weekday, month.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>$timestamp = strtotime("2025-01-01");</td>
+				<td>Converte uma string de data/hora em um timestamp Unix.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>$timestamp = strtotime("+1 week");</td>
+				<td>Soma uma semana à data da execução.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>echo date("d-m-Y", strtotime("next Monday"));</td>
+				<td>Mostra que dia será na próxima Segunda-Feira.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>echo "Hoje é dia " . $date->format("d");</td>
+				<td>Hoje é dia 04 format("d", "m", "Y", "H", "i", "s").</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>$BR = DateTime::createFromFormat("d/m/Y", "01/01/2025");</td>
+				<td>Criando um DateTime com formato customizado.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>try { ... } catch (PDOException $e)</td>
+				<td>Captura exceções geradas por operações de banco de dados com PDO.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>$e->getMessage() || PDOException</td>
+				<td>Retorna a mensagem de erro associada à exceção.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>$e->getCode() || PDOException</td>
+				<td>Retorna o código de erro associado à exceção.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>$e->getFile() || PDOException</td>
+				<td>Retorna o nome do arquivo onde a exceção foi gerada.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>$e->getLine() || PDOException</td>
+				<td>Retorna a linha do arquivo onde a exceção foi gerada.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>$e->getTrace() ||  Retorna uma matriz ...</td>
+				<td>com o rastreamento da pilha de onde a exceção foi lançada.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>$e->getTraceAsString() || PDOException</td>
+				<td>Retorna o rastreamento da pilha como uma string formatada.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>$e->errorInfo || PDOException</td>
+				<td>Informações detalhadas do erro gerado pelo PDO.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>throw new PDOException($message, $code)</td>
+				<td>Gera manualmente uma exceção do tipo PDOException.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>$e instanceof PDOException</td>
+				<td>Verifica se a exceção capturada é uma instância de PDOException.</td>
+			</tr>
+			<tr>
 				<td>DEV</td>
 				<td>Branch</td>
 				<td>Uma ramificação a parte do repositório principal de código.</td>
@@ -442,6 +587,11 @@
 				<td>DEV</td>
 				<td>Task</td>
 				<td>Uma unidade de trabalho, uma tarefa, uma funcionalidade, um bug.</td>
+			</tr>
+			<tr>
+				<td>DEV</td>
+				<td>Timestamp Unix</td>
+				<td>Número de segundos desde 1º de janeiro de 1970 (UTC).</td>
 			</tr>
         </tbody>
     </table>

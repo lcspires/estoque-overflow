@@ -1,9 +1,17 @@
 <?php echo "\033[2J\033[;H";
 
-$string = "1 35";
+/* Verificando se o arquivo/diretório Existe
+e se é de fato um arquivo e não um diretório. */
 
-list($a, $b) = array_map("intval", preg_split('/\D+/', $string));
+$file = __DIR__ . "/casa.txt";
 
-// Exibir o resultado como um array de inteiros
-echo $a, PHP_EOL, $b;
-
+if (file_exists($file) && is_file($file)) {
+    var_dump(
+        file($file),
+        pathinfo($file)
+    );
+} else {
+    $fileOpen = fopen($file, "w");
+    fwrite($fileOpen, "Linha 01");
+    fclose($fileOpen);
+}
