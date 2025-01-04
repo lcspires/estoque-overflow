@@ -159,13 +159,53 @@
 			</tr>
 			<tr>
 				<td>PHP</td>
-				<td>If (!empty($variable) { ... })</td>
+				<td>If (!empty($variable)) { ... }</td>
 				<td>Verifica se uma variável está vazia (null, false, 0, "", ou não definida).</td>
 			</tr>
 			<tr>
 				<td>PHP</td>
-				<td>If (isset($variable) { ... })</td>
+				<td>If (isset($variable)) { ... }</td>
 				<td>Verifica se uma variável está definida e não é null.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>If (is_int($var)) { ... }</td>
+				<td>is_float, is_string, is_bool, is_array, is_object.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>if (ctype_digit($string)) { ... }</td>
+				<td>Verifica se a string contém apenas dígitos numéricos.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>if (preg_match('/^[0-9]{2}$/', ($var))) { ... }</td>
+				<td>Verifica se a variável contém exatamente dois dígitos numéricos.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>if (filter_var($email, FILTER_VALIDATE_EMAIL)) { ... }</td>
+				<td>FILTER_VALIDATE_URL, FILTER_VALIDATE_INT, FILTER_VALIDATE_IP.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>"R$ " . number_format(3600, 0, ",", ".");</td>
+				<td>Formatação de casas decimais (saída: R$ 3.600).</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>array_filter($numbers, function($callback) { return</td>
+				<td>$callback & 1;}); (padrão: sem nenhuma flag)</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>array_filter($array, function($parameter) { return</td>
+				<td>$parameter == 'x';}, ARRAY_FILTER_USE_KEY); (Callback)</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>array_filter($array, function($value, $key) { return</td>
+				<td>$key == 'x' || $value == y;}, ARRAY_FILTER_USE_BOTH);</td>
 			</tr>
 			<tr>
 				<td>PHP</td>
@@ -180,7 +220,148 @@
 			<tr>
 				<td>PHP</td>
 				<td>$variable = function ($argument) { ... };</td>
-				<td>Define uma função anônima (Closure), usualmente em runtime.</td>
+				<td>Define uma função anônima (Closure), definida inline.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>strlen($string) || mb_strlen($string)</td>
+				<td>Retorna o comprimento de uma string (multibyte).</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>substr($string, 5); || mb_substr($string, 5);</td>
+				<td>Retorna uma string a partir de uma posição específica (multibyte).</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>mb_strtoupper($string); || mb_strtolower($string);</td>
+				<td>Converte uma string multibyte para maiúscula ou para minúscula.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>mb_convert_case($string, MB_CASE_UPPER)</td>
+				<td>para maiúscula ou para minúscula ($string, MB_CASE_LOWER).</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>mb_convert_case($string, MB_CASE_TITLE)</td>
+				<td>Converte uma string para o formato de título (primeira letra maiúscula).</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>mb_strstr($string, ", ", true)</td>
+				<td>Retorna tudo antes da primeira ocorrência ", " (depois: false).</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>mb_strrchr($string, ", ", true)</td>
+				<td>Retorna tudo antes da última ocorrência ", " (depois: false).</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>str_replace("x", "y", $string)</td>
+				<td>Substitui todas as ocorrências por outra.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>mb_parse_str(string $string, array &$result)</td>
+				<td>Transforma uma string codificada em chaves e valores de um array.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>$queryString = "nome=Joao&idade=25&cidade=São Paulo";</td>
+				<td>String com parâmetros codificados ("chave=valor&chave=valor").</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>http_build_query(array $data, string $numeric_prefix</td>
+				<td>= "", string $arg_separator = "&") (URL de consulta, formulários GET)</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>array_unshift($array, $value)</td>
+				<td>Adiciona um ou mais elementos no início de um array.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>array_push($array, $value)</td>
+				<td>Adiciona um ou mais elementos ao final de um array.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>array_shift($array)</td>
+				<td>Remove o primeiro elemento de um array e desloca os outros.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>array_pop($array)</td>
+				<td>Remove o último elemento de um array.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>array_reverse($array)</td>
+				<td>Inverte a ordem dos elementos de um array.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>asort($array)</td>
+				<td>Ordena um array em ordem crescente, mantendo a associação de índices.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>ksort($array)</td>
+				<td>Ordena um array pelas chaves, em ordem crescente.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>krsort($array)</td>
+				<td>Ordena um array pelas chaves, em ordem decrescente.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>sort($array)</td>
+				<td>Ordena um array em ordem crescente, reindexando os índices.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>rsort($array)</td>
+				<td>Ordena um array em ordem decrescente, reindexando os índices.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>in_array($value, $array)</td>
+				<td>Verifica se um valor existe em um array.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>implode("-", $array)</td>
+				<td>Converte um array em uma string, unindo os elementos com um separador.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>explode($separator, $string)</td>
+				<td>Divide uma string em um array com base em um delimitador.</td>
+			</tr>
+
+			<tr>
+				<td>PHP</td>
+				<td>list($a, $b, $c) = $array</td>
+				<td>Atribui valores de um array a variáveis individuais.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>array_map("intval", str_split($string));;</td>
+				<td>'preg_split' divide e 'array_map' aplica 'intval' em todos.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>array_map("intval", preg_split('/\D+/', $string));</td>
+				<td>'preg_split', expressão regular que mantém apenas números.</td>
+			</tr>
+			<tr>
+				<td>PHP</td>
+				<td>list($a, $b) = array_map("intval", str_split($strde2));</td>
+				<td>$strde2 = "12" -> $a = 1 and $b = 2 (se ligue nos espaços)</td>
 			</tr>
 			<tr>
 				<td>DEV</td>
@@ -191,6 +372,16 @@
 				<td>DEV</td>
 				<td>CI/CD</td>
 				<td>(Continuous Integration / Continuous Deployment)</td>
+			</tr>
+			<tr>
+				<td>DEV</td>
+				<td>Dependency Injection (Injeção de Dependência)</td>
+				<td>Desacoplamento e testabilidade.</td>
+			</tr>
+			<tr>
+				<td>DEV</td>
+				<td>Dependency Inversion Principle (Inversão de Dependência)</td>
+				<td>Um dos princípios do SOLID: módulos, abstrações e detalhes.</td>
 			</tr>
 			<tr>
 				<td>DEV</td>
@@ -219,8 +410,8 @@
 			</tr>
 			<tr>
 				<td>DEV</td>
-				<td>Mock</td>
-				<td>Versão fictícia de um sistema, protótipos para testes de usabilidade.</td>
+				<td>Mock (objeto falso que simula uma dependência).</td>
+				<td>Permitir a verificação de interações com o código testado.</td>
 			</tr>
 			<tr>
 				<td>DEV</td>
@@ -241,6 +432,11 @@
 				<td>DEV</td>
 				<td>Pull Request (PR)</td>
 				<td>Requisitar que as alterações sejam integradas ao repositório principal.</td>
+			</tr>
+			<tr>
+				<td>DEV</td>
+				<td>Stub (objeto falso que fornece respostas configuradas)</td>
+				<td>Simula dependências externas, como um banco de dados ou uma API.</td>
 			</tr>
 			<tr>
 				<td>DEV</td>

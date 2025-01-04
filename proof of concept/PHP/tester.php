@@ -1,15 +1,9 @@
 <?php echo "\033[2J\033[;H";
 
-$rockAndRoll = 2;
+$string = "1 35";
 
-if (isset($rockAndRoll)) {
-    var_dump("Rock existe e toca {$rockAndRoll}");
-} else {
-    var_dump("Não existe ou não está tocando!");
-}
+list($a, $b) = array_map("intval", preg_split('/\D+/', $string));
 
-/*if (!empty($rockAndRoll)) {
-    var_dump("Rock existe e toca {$rockAndRoll}");
-} else {
-    var_dump("Não existe ou não está tocando!");
-}*/
+// Exibir o resultado como um array de inteiros
+echo $a, PHP_EOL, $b;
+
