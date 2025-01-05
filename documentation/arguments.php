@@ -20,10 +20,10 @@ echo "<p><a href='index.php?{$args}'>arguments via StdClass</a></p>";
 echo "<p><strong>Validações</strong><p>";
 
 $dataFilter = http_build_query([
-    "name" => "Robson",
-    "company" => "UpInside",
-    "mail" => "cursos@upinside.com.br",
-    "site" => "upinside.com.br",
+    "name" => "Lucas",
+    "company" => "Lispector",
+    "mail" => "trust@company.com.br",
+    "site" => "lispector.com.br",
     "script" => "<script>alert('Esse é um JavaScript')</script>"
 ]);
 
@@ -53,10 +53,10 @@ echo "<pre>" . print_r($dataUrl, true) . "</pre>";
 var_dump($dataUrl);
 
 $dataFilterII = http_build_query([
-    "name" => "Robson",
-    "company" => "UpInside",
-    "mail" => "cursos@upinside.com.br",
-    "site" => "https://upinside.com.br",
+    "name" => "Lucas",
+    "company" => "Lispector",
+    "mail" => "company@lispector.com.br",
+    "site" => "https://lispector.com.br",
     "script" => "<script>alert('Esse é um JavaScript')</script>"
 ]);
 var_dump($dataFilterII);
