@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Lispector</title>
+    <style>
+        /* Estilo geral */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9; /* Fundo mais claro */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Container do formulário */
+        .form-container {
+            background-color: white;
+            padding: 25px 35px;
+            border-radius: 6px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 350px; /* Ajustando a largura para ficar mais estreito */
+        }
+
+        /* Título */
+        h2 {
+            text-align: center;
+            color: #333;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Box model para garantir que o padding e a border não alterem a largura */
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Campos de entrada */
+        input[type="text"],
+        input[type="email"] {
+            width: 100%; /* Os campos de entrada ocuparão toda a largura disponível */
+            padding: 10px;
+            margin: 12px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: #f4f4f4;
+        }
+
+        /* Cor do botão */
+        button {
+            width: 100%; /* Agora o botão ocupa a mesma largura dos campos */
+            padding: 10px;
+            margin: 12px 0;
+            background-color: #18004d; /* Cor do botão */
+            color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #15003c; /* Cor mais escura ao passar o mouse */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Lispector</h2>
+
+        <form>
+            <div>
+                <label for="name">Usuário</label>
+                <input type="text" id="name" name="name" placeholder="Usuário"/>
+            </div>
+            <div>
+                <label for="mail">Senha</label>
+                <input type="email" id="mail" name="mail" placeholder="Senha"/>
+            </div>
+            <button>Entrar</button>
+        </form>
+    </div>
+
+</body>
+</html>

@@ -55,7 +55,7 @@ $company->manager = new StdClass();
 $company->manager->name = "Lucia";
 ```
 
-**File Verification**
+**File**
 ```php
 /* Verificando se o arquivo/diretorio existe
 e se eh de fato um arquivo e nao uma pasta. */
@@ -64,10 +64,43 @@ $file = __DIR__ . "/tester.txt";
 
 if (file_exists($file) && is_file($file)) {
     var_dump(
-        file($file),	// conteudo enquanto array linha a linha.
+        file($file),
         pathinfo($file)
     );
 } else {
-    echo "Não existe!";
+    $fileOpen = fopen($file, "w");
+    fwrite($fileOpen, "Linha 01");
+    fclose($fileOpen);
+}
+```
+
+Para grandes volumes de dados prefira fopen com fread ou fgets.
+```php
+$lines = file($file);
+foreach ($lines as $line){
+    echo $line . PHP_EOL;
+}
+
+
+$handle = fopen($file, "r");
+while (($line = fgets($handle)) !== false) {
+    echo $line;
+}	
+fclose($handle);
+
+if (feof($handle)) {
+    echo "Fim do arquivo alcançado.";
+} else {
+    echo "Erro durante a leitura do arquivo.";
+}
+```
+
+**Folder**
+```php
+$folder = __DIR__ . "/pasta";
+if (!file_exists($folder) || !is_dir($folder)) {
+    mkdir($folder, 0755);
+} else {
+    var_dump(scandir($folder));
 }
 ```
