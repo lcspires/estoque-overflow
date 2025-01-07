@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Consolas, sans-serif;
+            margin: 20px;
+        }
+        .search-container {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="filter">
+    </div>
+
+    <table id="filterTable">
+        <thead>
+            <tr>
+                <th>column 1</th>
+                <th>column 2</th>
+                <th>column 3</th>
+            </tr>
+        </thead>
+        <tbody>
+			<tr>
+				<td>Simple</td>
+				<td>is</td>
+				<td>hard.</td>
+			</tr>
+        </tbody>
+    </table>
+
+    <script>
+        document.getElementById('searchInput').addEventListener('input', function () {
+            const filter = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#filterTable tbody tr');
+
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                const match = Array.from(cells).some(cell => cell.textContent.toLowerCase().includes(filter));
+
+                row.style.display = match ? '' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>

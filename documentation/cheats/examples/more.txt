@@ -1,0 +1,103 @@
+Manipulação de strings:
+
+strlen(): Retorna o comprimento de uma string.
+substr(): Retorna uma parte de uma string.
+str_replace(): Substitui todas as ocorrências de uma substring por outra.
+strpos(): Encontra a posição de uma substring dentro de uma string.
+trim(): Remove espaços em branco do início e do final de uma string.
+strtoupper() / strtolower(): Converte todos os caracteres de uma string para maiúsculas ou minúsculas.
+preg_match(): Executa uma correspondência com uma expressão regular.
+
+
+Manipulação de arrays:
+
+array_push(): Adiciona um ou mais elementos ao final de um array.
+array_pop(): Remove o último elemento de um array.
+array_shift(): Remove o primeiro elemento de um array.
+array_unshift(): Adiciona um ou mais elementos no início de um array.
+array_merge(): Junta dois ou mais arrays.
+array_map(): Aplica uma função a cada elemento de um array.
+array_filter(): Filtra os elementos de um array com base em uma função de callback.
+in_array(): Verifica se um valor existe em um array.
+array_key_exists(): Verifica se uma chave existe em um array.
+
+
+Funções de manipulação de arquivos:
+
+fopen(): Abre um arquivo ou URL.
+fwrite(): Escreve dados em um arquivo.
+fclose(): Fecha um arquivo.
+file_get_contents(): Lê um arquivo e retorna seu conteúdo.
+file_put_contents(): Escreve dados em um arquivo.
+
+
+Funções para manipulação de datas e horas:
+
+date(): Formata a data e hora local.
+strtotime(): Converte uma string de data/hora para o timestamp Unix.
+time(): Retorna o timestamp atual.
+mktime(): Retorna o timestamp Unix de uma data específica.
+date_diff(): Calcula a diferença entre duas datas.
+
+
+Funções de banco de dados (usando MySQLi ou PDO):
+
+mysqli_connect(): Estabelece uma conexão com o banco de dados MySQL.
+mysqli_query(): Executa uma consulta no banco de dados.
+mysqli_fetch_assoc(): Recupera uma linha de resultado como um array associativo.
+PDO::__construct(): Cria uma nova conexão com o banco de dados.
+PDO::query(): Executa uma consulta SQL no banco de dados.
+PDO::prepare(): Prepara uma declaração SQL para execução.
+
+
+Funções para manipulação de erros:
+
+error_log(): Envia uma mensagem de erro para o log.
+trigger_error(): Aciona um erro do PHP.
+set_error_handler(): Define um manipulador de erros personalizado.
+try-catch: Bloco de tratamento de exceções para capturar e lidar com erros.
+
+
+Funções de manipulação de sessões e cookies:
+
+session_start(): Inicia uma nova sessão ou retoma uma existente.
+$_SESSION[]: Superglobal usada para armazenar e recuperar dados de sessão.
+setcookie(): Define um cookie no navegador do cliente.
+$_COOKIE[]: Superglobal para acessar cookies enviados pelo navegador.
+
+
+Funções para segurança:
+
+password_hash(): Cria um hash seguro de uma senha.
+password_verify(): Verifica uma senha contra um hash.
+hash(): Calcula um hash de uma string usando algoritmos como MD5, SHA-1, SHA-256, etc.
+filter_var(): Filtra dados de entrada com validação e sanitização.
+openssl_encrypt() / openssl_decrypt(): Funções para criptografia e descriptografia.
+
+
+Funções de manipulação de JSON:
+
+json_encode(): Codifica uma variável em JSON.
+json_decode(): Decodifica uma string JSON em uma variável PHP.
+
+
+Funções para manipulação de variáveis:
+
+isset(): Verifica se uma variável está definida e não é nula.
+empty(): Verifica se uma variável é vazia.
+unset(): Desfaz a definição de uma variável.
+
+
+Funções para trabalho com URLs:
+
+parse_url(): Analisa uma URL e retorna suas partes.
+http_build_query(): Converte um array associativo em uma string de consulta URL-encoded.
+urlencode() / urldecode(): Codifica e decodifica uma URL.
+
+
+Funções de manipulação de arquivos e diretórios:
+
+mkdir(): Cria um diretório.
+rmdir(): Remove um diretório vazio.
+unlink(): Deleta um arquivo.
+scandir(): Retorna uma lista de arquivos e diretórios em um diretório.

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F12</title>
+    <style>
+        body {
+            font-family: Consolas, sans-serif;
+            margin: 20px;
+			font-size: 15px;
+        }
+        .search-container {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="filter">
+    </div>
+
+    <table id="filterTable">
+        <thead>
+            <tr>
+                <th>var_dump($_SERVER);</th>
+                <th>var_dump(getallheaders());</th>
+                <th>phpinfo();</th>
+            </tr>
+        </thead>
+        <tbody>
+			<tr>
+				<td>$_SERVER['REQUEST_METHOD']</td>
+				<td>'contém o método HTTP da requisição (GET, POST, etc.)'</td>
+				<td>Debugging</td>
+			</tr>
+			<tr>
+				<td>$_SERVER['REQUEST_URI']</td>
+				<td>'/index.php?name=Houston&log=%3Cscript%3Ealert%28%27JS%27%29%3C%2Fscript%3E'</td>
+				<td>Debugging</td>
+			</tr>
+			<tr>
+				<td>$_SERVER['QUERY_STRING']</td>
+				<td>'name=Houston&log=%3Cscript%3Ealert%28%27JS%27%29%3C%2Fscript%3E'</td>
+				<td>Debugging</td>
+			</tr>
+			<tr>
+				<td>$_GET</td>
+				<td>'dados anexados à URL (podem ser armazenadas em cache por navegadores)'</td>
+				<td>Debugging</td>
+			</tr>
+			<tr>
+				<td>$_POST</td>
+				<td>'dados enviados no corpo da requisição HTTP (dados sensíveis ou que modificam o estado do sistema)'</td>
+				<td>Debugging</td>
+			</tr>
+			<tr>
+				<td>filter_input_array()</td>
+				<td>'$dataArray = filter_input_array(INPUT_GET, FILTER_DEFAULT);'</td>
+				<td>Reception</td>
+			</tr>
+			<tr>
+				<td>filter_input()</td>
+				<td>'$dataKey = filter_input(INPUT_GET, "key", FILTER_SANITIZE_FULL_SPECIAL_CHARS);'</td>
+				<td>Reception</td>
+			</tr>
+			<tr>
+				<td>htmlspecialchars()</td>
+				<td>'$var = htmlspecialchars("&lt;html&gt;", ENT_QUOTES | ENT_HTML5 | ENT_SUBSTITUTE, 'UTF-8', false);'</td>
+				<td>Sanitize</td>
+			</tr>
+			<tr>
+				<td>html_entity_decode()</td>
+				<td>'$var = html_entity_decode("&amp;lt;html&amp;gt;", ENT_QUOTES | ENT_HTML5, 'UTF-8');' :: output: &lt;html&gt;</td>
+				<td>Visuality</td>
+			</tr>
+			<tr>
+				<td>http_build_query()</td>
+				<td>'$var = http_build_query($array) || $var = http_build_query([ "name" => "Lucas", "id" => "42"]);'</td>
+				<td>Usability</td>
+			</tr>
+			<tr>
+				<td>parse_str()</td>
+				<td>'parse_str($stringQuery, $toArray)'</td>
+				<td>Transform</td>
+			</tr>
+			<tr>
+				<td>str_replace()</td>
+				<td>'$str = "key1:value1;key2:value2";' '$str = str_replace(";", "&", str_replace(":", "=", $string));'</td>
+				<td>Transform</td>
+			</tr>
+			<tr>
+				<td>filter_var_array()</td>
+				<td>'$sanitizedData = filter_var_array($dataPreFilter[], $to_be_validated[]);'</td>
+				<td><a href="examples/dataPreFilter.md" target="_blank">look</a></td>
+			</tr>
+			<tr>
+				<td>filter_input_array()</td>
+				<td>'$sanitizedData = filter_input_array(INPUT_GET, $dataPreFilter);' :: 'custom filter at reception'</td>
+				<td><a href="examples/dataPreFilter.md" target="_blank">look</a></td>
+			</tr>
+			<tr>
+				<td>if($var) 'is true'</td>
+				<td>'if ($var != 0 || 0.0 || "" || '' || "0" || [] || array() || null || false || pure object) do it { ... }.'</td>
+				<td>tester</td>
+			</tr>
+			<tr>
+				<td>in_array()</td>
+				<td>'if (in_array("", $array)) { ... } :: verifica se existe um valor vazio dentro do array.'</td>
+				<td>array</td>
+			</tr>
+			<tr>
+				<td>empty($var) 'if(!$var)'</td>
+				<td>'$var == 0 || 0.0 || "" || "0" || [] || array() || null || false || not declared' :: output->true 'required'</td>
+				<td>tester</td>
+			</tr>
+			<tr>
+				<td>filter_var()</td>
+				<td>'if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) { echo "invalid format"; }'</td>
+				<td>tester</td>
+			</tr>
+			<tr>
+				<td>strip_tags()</td>
+				<td>'$saveStrip = array_map("strip_tags", $postArray);' 'remove any tag'</td>
+				<td>Sanitize</td>
+			</tr>
+			<tr>
+				<td>trim()</td>
+				<td>'$saveClean = array_map("trim", $saveSanitized);' :: 'removes extra whitespace'</td>
+				<td>Sanitize</td>
+			</tr>
+			<tr>
+				<td>stand-by</td>
+				<td><strong>prepared statements</strong> para evitar <strong>SQL Injection</strong></td>
+				<td>Sanitize</td>
+			</tr>
+			<tr>
+				<td>file_exists() && is_dir()</td>
+				<td>'if (!file_exists($folder) && !is_dir($folder)) { mkdir($folder, 0755); }' 'folder exists as a directory'</td>
+				<td>Validation</td>
+			</tr>
+			<tr>
+				<td>file sent and received</td>
+				<td>'if ($_FILES && !empty($_FILES['file']['name']))' 'redundancy, why not?'</td>
+				<td>Validation</td>
+			</tr>
+        </tbody>
+    </table>
+
+    <script>
+        document.getElementById('searchInput').addEventListener('input', function () {
+            const filter = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#filterTable tbody tr');
+
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                const match = Array.from(cells).some(cell => cell.textContent.toLowerCase().includes(filter));
+
+                row.style.display = match ? '' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>

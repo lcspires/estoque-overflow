@@ -27,7 +27,7 @@ if ($postArray) { // Verifica se o array não está vazio.
     if (in_array("", $postArray)) { //Verifica se algum dos campos está vazio.
         echo "<p class='trigger warning'>Preencha todos os campos!</p>";
     } elseif (!filter_var($postArray['mail'], FILTER_VALIDATE_EMAIL)) {
-        echo "<p class='trigger warning'>E-mail informado não é válido!</p>";
+        echo "<p class='trigger warning'>Formato do e-mail não é válido!</p>";
     } else {
         $saveStrip = array_map("strip_tags", $postArray); // Remove qualquer tag HTML ou PHP de cada valor no array (XSS Counter).
         $saveSanitized = array_map("htmlspecialchars", $saveStrip);	// Converte caracteres especiais em entidades HTML (XSS Counter).

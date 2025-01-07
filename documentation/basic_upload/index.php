@@ -6,20 +6,31 @@ if (!file_exists($folder) || !is_dir($folder)) {
     mkdir($folder, 0755);
 }
 
-var_dump([
+/*var_dump([
     "filesize" => ini_get("upload_max_filesize"),
     "postsize" => ini_get("post_max_size")
 ]);
-
+*/
 var_dump([
     filetype(__DIR__ . "/index.php"),
-    mime_content_type(__DIR__ . "/index.php")
-]);
+	filetype(__DIR__ . "/uploads"),
+	mime_content_type(__DIR__ . "/index.php"),
+    mime_content_type(__DIR__ . "/uploads"),
+	pathinfo(__DIR__ . "/index.php"), //, PATHINFO_EXTENSION
+]);	
+
+$imageInfo = getimagesize(__DIR__ . "/uploads/1736258826.jpg");
+if ($imageInfo === false) {
+    echo "O arquivo não é uma imagem válida.";
+} else {
+    echo "Imagem válida. Tipo MIME: " . $imageInfo['mime'];
+	var_dump($imageInfo);
+}
 
 // Obtém o parâmetro 'post' da URL e valida como booleano
 $getPost = filter_input(INPUT_GET, "post", FILTER_VALIDATE_BOOLEAN);
+var_dump($_GET);
 
-// Verifica se um arquivo foi enviado
 if ($_FILES && !empty($_FILES['file']['name'])) {
     // Obtendo informações do arquivo	
     $fileUpload = $_FILES['file'];
@@ -28,7 +39,7 @@ if ($_FILES && !empty($_FILES['file']['name'])) {
     $fileSize = $fileUpload['size'];
 	$fileTemp = $fileUpload['tmp_name'];
 	
-	var_dump($fileUpload);
+	var_dump($_FILES);
 
     // Define os tipos MIME e tamanhos máximos permitidos
     $allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
