@@ -1,0 +1,25 @@
+{
+	"name": "lcspires/lispector",
+    "version": "1.0.0",
+	"description": "Inventory Application",
+	"minimum-stability": "stable",
+	"authors": [
+		{
+			"name": "Lucas Pires",
+			"email": "ferreira.l@ufba.br",
+			"homepage": "https://github.com/lcspires",
+			"role": "Developer"
+		}
+	],
+	"config": {
+		"vendor-lib": "vendor"
+	},
+	"autoload": {
+		"psr-4": {
+			"Source\\": "source/"
+		}
+	},
+	"require": {
+		"phpmailer/phpmailer": "^6.9.2"
+	}
+}
